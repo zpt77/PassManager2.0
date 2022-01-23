@@ -27,9 +27,19 @@ namespace PassManager2._0
         }
         private void loginPanel1_LoginClick(object sender, EventArgs e)
         {
-            //GetCredentials();
-            var w = new ApplicationForm();
-            w.Show();
+            int userId = GetUsrID(GetCredentials()[0]);
+            string inputPassword = GetHashString(GetCredentials()[1]);
+            bool openSession = ComparePassword(inputPassword, GetUserHash(userId));
+            if (openSession == true)
+            {
+                var w = new ApplicationForm(userId);
+                w.Show();
+            }
+            else
+            {
+                MessageBox.Show("Incorrect password");
+            }
+
         }
  
 
@@ -38,12 +48,6 @@ namespace PassManager2._0
             var w = new RegisterForm();
             w.Show();
         }
-
-        
-
-
-
-        // methods for login 
 
         public string[] GetCredentials()
         {
@@ -55,8 +59,10 @@ namespace PassManager2._0
 
         public int GetUsrID(string login)
         {
-            int UsrID = 0;
-
+            
+            var ctx = new PassManagerDB();
+            var userWithLogin = ctx.Users.Where(u => u.LoginName == login).FirstOrDefault();
+            int UsrID = userWithLogin.Id;
             return UsrID;
         }
 
@@ -76,9 +82,23 @@ namespace PassManager2._0
             return sb.ToString();
         }
 
-        public bool ComparePassword()
+        public string GetUserHash(int userId)
         {
-            return true;
+            var ctx = new PassManagerDB();
+            var userHash = ctx.Users.Where(u => u.Id == userId).Select(u => u.Password).FirstOrDefault();
+            return userHash;
+        }
+
+        public bool ComparePassword(string inputPassword, string userHash)
+        {
+            bool correctPassword = false;
+            if (inputPassword == userHash)
+            {
+                correctPassword = true;
+            }
+                       
+
+            return correctPassword;
         }
 
         public void LoadData()

@@ -33,52 +33,53 @@ namespace PassManager2._0
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ApplicationForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPasswords = new System.Windows.Forms.TabPage();
+            this.deleteButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyToClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabSettings = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.appName1 = new PassManager.Controls.AppName();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ChangeApplyButton = new System.Windows.Forms.Button();
+            this.ChangeEmail = new PassManager.Controls.NamedTextbox();
+            this.ChangePassword = new PassManager.Controls.NamedTextbox();
+            this.ChangeLogin = new PassManager.Controls.NamedTextbox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.AddPasswordToDB = new System.Windows.Forms.Button();
+            this.passwordCheckBox = new System.Windows.Forms.CheckBox();
+            this.mailCheckBox = new System.Windows.Forms.CheckBox();
             this.AddDetails = new PassManager.Controls.NamedTextbox();
             this.AddURL = new PassManager.Controls.NamedTextbox();
             this.AddLogin = new PassManager.Controls.NamedTextbox();
             this.AddPassword = new PassManager.Controls.NamedTextbox();
             this.AddEmail = new PassManager.Controls.NamedTextbox();
             this.AddTitle = new PassManager.Controls.NamedTextbox();
-            this.mailCheckBox = new System.Windows.Forms.CheckBox();
-            this.passwordCheckBox = new System.Windows.Forms.CheckBox();
-            this.AddPasswordToDB = new System.Windows.Forms.Button();
-            this.ChangeLogin = new PassManager.Controls.NamedTextbox();
-            this.ChangePassword = new PassManager.Controls.NamedTextbox();
-            this.ChangeEmail = new PassManager.Controls.NamedTextbox();
-            this.ChangeApplyButton = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.appName1 = new PassManager.Controls.AppName();
-            this.passwordBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pTitleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pLoginDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pEmailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pPasswordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pURLDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pDetailsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deleteButton = new System.Windows.Forms.Button();
+            this.passwordBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPasswords.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.tabSettings.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.passwordBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,6 +95,7 @@ namespace PassManager2._0
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1033, 450);
             this.tabControl1.TabIndex = 0;
+            this.tabControl1.Click += new System.EventHandler(this.tabControl1_Click);
             // 
             // tabPasswords
             // 
@@ -108,6 +110,16 @@ namespace PassManager2._0
             this.tabPasswords.TabIndex = 2;
             this.tabPasswords.Text = "Passwords";
             // 
+            // deleteButton
+            // 
+            this.deleteButton.Location = new System.Drawing.Point(916, 33);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteButton.TabIndex = 1;
+            this.deleteButton.Text = "Delete";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -120,6 +132,7 @@ namespace PassManager2._0
             this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
             this.pTitleDataGridViewTextBoxColumn,
             this.pLoginDataGridViewTextBoxColumn,
             this.pEmailDataGridViewTextBoxColumn,
@@ -136,6 +149,13 @@ namespace PassManager2._0
             this.dataGridView1.Size = new System.Drawing.Size(871, 418);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.Visible = false;
             // 
             // contextMenuStrip1
             // 
@@ -167,170 +187,9 @@ namespace PassManager2._0
             this.tabSettings.Location = new System.Drawing.Point(4, 22);
             this.tabSettings.Name = "tabSettings";
             this.tabSettings.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSettings.Size = new System.Drawing.Size(877, 424);
+            this.tabSettings.Size = new System.Drawing.Size(1025, 424);
             this.tabSettings.TabIndex = 1;
             this.tabSettings.Text = "Settings";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.ChangeApplyButton);
-            this.groupBox2.Controls.Add(this.ChangeEmail);
-            this.groupBox2.Controls.Add(this.ChangePassword);
-            this.groupBox2.Controls.Add(this.ChangeLogin);
-            this.groupBox2.Location = new System.Drawing.Point(414, 230);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(455, 165);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "User Settings";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.BackColor = System.Drawing.Color.SteelBlue;
-            this.groupBox1.Controls.Add(this.AddPasswordToDB);
-            this.groupBox1.Controls.Add(this.passwordCheckBox);
-            this.groupBox1.Controls.Add(this.mailCheckBox);
-            this.groupBox1.Controls.Add(this.AddDetails);
-            this.groupBox1.Controls.Add(this.AddURL);
-            this.groupBox1.Controls.Add(this.AddLogin);
-            this.groupBox1.Controls.Add(this.AddPassword);
-            this.groupBox1.Controls.Add(this.AddEmail);
-            this.groupBox1.Controls.Add(this.AddTitle);
-            this.groupBox1.Location = new System.Drawing.Point(8, 20);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(378, 375);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Add Password";
-            // 
-            // AddDetails
-            // 
-            this.AddDetails.GroupName = "Details";
-            this.AddDetails.InputText = "";
-            this.AddDetails.Location = new System.Drawing.Point(6, 263);
-            this.AddDetails.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.AddDetails.Name = "AddDetails";
-            this.AddDetails.Size = new System.Drawing.Size(200, 50);
-            this.AddDetails.TabIndex = 5;
-            // 
-            // AddURL
-            // 
-            this.AddURL.GroupName = "URL";
-            this.AddURL.InputText = "";
-            this.AddURL.Location = new System.Drawing.Point(6, 183);
-            this.AddURL.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.AddURL.Name = "AddURL";
-            this.AddURL.Size = new System.Drawing.Size(200, 50);
-            this.AddURL.TabIndex = 4;
-            // 
-            // AddLogin
-            // 
-            this.AddLogin.GroupName = "Login";
-            this.AddLogin.InputText = "";
-            this.AddLogin.Location = new System.Drawing.Point(212, 24);
-            this.AddLogin.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.AddLogin.Name = "AddLogin";
-            this.AddLogin.Size = new System.Drawing.Size(150, 50);
-            this.AddLogin.TabIndex = 3;
-            // 
-            // AddPassword
-            // 
-            this.AddPassword.GroupName = "Password";
-            this.AddPassword.InputText = "";
-            this.AddPassword.Location = new System.Drawing.Point(6, 104);
-            this.AddPassword.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.AddPassword.Name = "AddPassword";
-            this.AddPassword.Size = new System.Drawing.Size(200, 50);
-            this.AddPassword.TabIndex = 2;
-            // 
-            // AddEmail
-            // 
-            this.AddEmail.GroupName = "E-mail";
-            this.AddEmail.InputText = "";
-            this.AddEmail.Location = new System.Drawing.Point(212, 104);
-            this.AddEmail.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.AddEmail.Name = "AddEmail";
-            this.AddEmail.Size = new System.Drawing.Size(150, 50);
-            this.AddEmail.TabIndex = 1;
-            // 
-            // AddTitle
-            // 
-            this.AddTitle.GroupName = "Title";
-            this.AddTitle.InputText = "";
-            this.AddTitle.Location = new System.Drawing.Point(6, 24);
-            this.AddTitle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.AddTitle.Name = "AddTitle";
-            this.AddTitle.Size = new System.Drawing.Size(200, 50);
-            this.AddTitle.TabIndex = 0;
-            // 
-            // mailCheckBox
-            // 
-            this.mailCheckBox.AutoSize = true;
-            this.mailCheckBox.Location = new System.Drawing.Point(213, 183);
-            this.mailCheckBox.Name = "mailCheckBox";
-            this.mailCheckBox.Size = new System.Drawing.Size(111, 20);
-            this.mailCheckBox.TabIndex = 6;
-            this.mailCheckBox.Text = "Default E-mail";
-            this.mailCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // passwordCheckBox
-            // 
-            this.passwordCheckBox.AutoSize = true;
-            this.passwordCheckBox.Location = new System.Drawing.Point(213, 210);
-            this.passwordCheckBox.Name = "passwordCheckBox";
-            this.passwordCheckBox.Size = new System.Drawing.Size(136, 20);
-            this.passwordCheckBox.TabIndex = 7;
-            this.passwordCheckBox.Text = "Random Password";
-            this.passwordCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // AddPasswordToDB
-            // 
-            this.AddPasswordToDB.Location = new System.Drawing.Point(249, 276);
-            this.AddPasswordToDB.Name = "AddPasswordToDB";
-            this.AddPasswordToDB.Size = new System.Drawing.Size(75, 23);
-            this.AddPasswordToDB.TabIndex = 8;
-            this.AddPasswordToDB.Text = "Confirm";
-            this.AddPasswordToDB.UseVisualStyleBackColor = true;
-            this.AddPasswordToDB.Click += new System.EventHandler(this.AddPasswordToDB_Click);
-            // 
-            // ChangeLogin
-            // 
-            this.ChangeLogin.GroupName = "Change Login";
-            this.ChangeLogin.InputText = "";
-            this.ChangeLogin.Location = new System.Drawing.Point(15, 23);
-            this.ChangeLogin.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ChangeLogin.Name = "ChangeLogin";
-            this.ChangeLogin.Size = new System.Drawing.Size(150, 50);
-            this.ChangeLogin.TabIndex = 0;
-            // 
-            // ChangePassword
-            // 
-            this.ChangePassword.GroupName = "Change Password";
-            this.ChangePassword.InputText = "";
-            this.ChangePassword.Location = new System.Drawing.Point(223, 24);
-            this.ChangePassword.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.ChangePassword.Name = "ChangePassword";
-            this.ChangePassword.Size = new System.Drawing.Size(188, 50);
-            this.ChangePassword.TabIndex = 1;
-            // 
-            // ChangeEmail
-            // 
-            this.ChangeEmail.GroupName = "Change E-mail";
-            this.ChangeEmail.InputText = "";
-            this.ChangeEmail.Location = new System.Drawing.Point(15, 81);
-            this.ChangeEmail.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.ChangeEmail.Name = "ChangeEmail";
-            this.ChangeEmail.Size = new System.Drawing.Size(150, 50);
-            this.ChangeEmail.TabIndex = 2;
-            // 
-            // ChangeApplyButton
-            // 
-            this.ChangeApplyButton.Location = new System.Drawing.Point(270, 108);
-            this.ChangeApplyButton.Name = "ChangeApplyButton";
-            this.ChangeApplyButton.Size = new System.Drawing.Size(75, 23);
-            this.ChangeApplyButton.TabIndex = 3;
-            this.ChangeApplyButton.Text = "Apply";
-            this.ChangeApplyButton.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
@@ -350,32 +209,33 @@ namespace PassManager2._0
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "User Data";
             // 
-            // label1
+            // appName1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(55, 127);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Login:";
+            this.appName1.color = System.Drawing.Color.White;
+            this.appName1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.appName1.Location = new System.Drawing.Point(3, 19);
+            this.appName1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.appName1.Name = "appName1";
+            this.appName1.Size = new System.Drawing.Size(449, 63);
+            this.appName1.TabIndex = 8;
             // 
-            // label2
+            // label7
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(55, 152);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 16);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "E-Mail:";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(361, 148);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(44, 16);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "label7";
             // 
-            // label3
+            // label8
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(291, 127);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 16);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Name:";
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(291, 148);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(64, 16);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Surname:";
             // 
             // label4
             // 
@@ -404,37 +264,204 @@ namespace PassManager2._0
             this.label6.TabIndex = 3;
             this.label6.Text = "label6";
             // 
-            // label7
+            // label3
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(361, 148);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(44, 16);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "label7";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(291, 127);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(45, 16);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Name:";
             // 
-            // label8
+            // label2
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(291, 148);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(64, 16);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "Surname:";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(55, 152);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 16);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "E-Mail:";
             // 
-            // appName1
+            // label1
             // 
-            this.appName1.color = System.Drawing.Color.White;
-            this.appName1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.appName1.Location = new System.Drawing.Point(3, 19);
-            this.appName1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.appName1.Name = "appName1";
-            this.appName1.Size = new System.Drawing.Size(449, 63);
-            this.appName1.TabIndex = 8;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(55, 127);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(42, 16);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Login:";
             // 
-            // passwordBindingSource
+            // groupBox2
             // 
-            this.passwordBindingSource.DataSource = typeof(PassManager2._0.Password);
+            this.groupBox2.Controls.Add(this.ChangeApplyButton);
+            this.groupBox2.Controls.Add(this.ChangeEmail);
+            this.groupBox2.Controls.Add(this.ChangePassword);
+            this.groupBox2.Controls.Add(this.ChangeLogin);
+            this.groupBox2.Location = new System.Drawing.Point(414, 230);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(455, 165);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "User Settings";
+            // 
+            // ChangeApplyButton
+            // 
+            this.ChangeApplyButton.Location = new System.Drawing.Point(270, 108);
+            this.ChangeApplyButton.Name = "ChangeApplyButton";
+            this.ChangeApplyButton.Size = new System.Drawing.Size(75, 23);
+            this.ChangeApplyButton.TabIndex = 3;
+            this.ChangeApplyButton.Text = "Apply";
+            this.ChangeApplyButton.UseVisualStyleBackColor = true;
+            // 
+            // ChangeEmail
+            // 
+            this.ChangeEmail.GroupName = "Change E-mail";
+            this.ChangeEmail.InputText = "";
+            this.ChangeEmail.Location = new System.Drawing.Point(15, 81);
+            this.ChangeEmail.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.ChangeEmail.Name = "ChangeEmail";
+            this.ChangeEmail.ReadOnly = false;
+            this.ChangeEmail.Size = new System.Drawing.Size(150, 50);
+            this.ChangeEmail.TabIndex = 2;
+            // 
+            // ChangePassword
+            // 
+            this.ChangePassword.GroupName = "Change Password";
+            this.ChangePassword.InputText = "";
+            this.ChangePassword.Location = new System.Drawing.Point(223, 24);
+            this.ChangePassword.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.ChangePassword.Name = "ChangePassword";
+            this.ChangePassword.ReadOnly = false;
+            this.ChangePassword.Size = new System.Drawing.Size(188, 50);
+            this.ChangePassword.TabIndex = 1;
+            // 
+            // ChangeLogin
+            // 
+            this.ChangeLogin.GroupName = "Change Login";
+            this.ChangeLogin.InputText = "";
+            this.ChangeLogin.Location = new System.Drawing.Point(15, 23);
+            this.ChangeLogin.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ChangeLogin.Name = "ChangeLogin";
+            this.ChangeLogin.ReadOnly = false;
+            this.ChangeLogin.Size = new System.Drawing.Size(150, 50);
+            this.ChangeLogin.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.SteelBlue;
+            this.groupBox1.Controls.Add(this.AddPasswordToDB);
+            this.groupBox1.Controls.Add(this.passwordCheckBox);
+            this.groupBox1.Controls.Add(this.mailCheckBox);
+            this.groupBox1.Controls.Add(this.AddDetails);
+            this.groupBox1.Controls.Add(this.AddURL);
+            this.groupBox1.Controls.Add(this.AddLogin);
+            this.groupBox1.Controls.Add(this.AddPassword);
+            this.groupBox1.Controls.Add(this.AddEmail);
+            this.groupBox1.Controls.Add(this.AddTitle);
+            this.groupBox1.Location = new System.Drawing.Point(8, 20);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(378, 375);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Add Password";
+            // 
+            // AddPasswordToDB
+            // 
+            this.AddPasswordToDB.Location = new System.Drawing.Point(249, 276);
+            this.AddPasswordToDB.Name = "AddPasswordToDB";
+            this.AddPasswordToDB.Size = new System.Drawing.Size(75, 23);
+            this.AddPasswordToDB.TabIndex = 8;
+            this.AddPasswordToDB.Text = "Confirm";
+            this.AddPasswordToDB.UseVisualStyleBackColor = true;
+            this.AddPasswordToDB.Click += new System.EventHandler(this.AddPasswordToDB_Click);
+            // 
+            // passwordCheckBox
+            // 
+            this.passwordCheckBox.AutoSize = true;
+            this.passwordCheckBox.Location = new System.Drawing.Point(213, 209);
+            this.passwordCheckBox.Name = "passwordCheckBox";
+            this.passwordCheckBox.Size = new System.Drawing.Size(136, 20);
+            this.passwordCheckBox.TabIndex = 7;
+            this.passwordCheckBox.Text = "Random Password";
+            this.passwordCheckBox.UseVisualStyleBackColor = true;
+            this.passwordCheckBox.CheckedChanged += new System.EventHandler(this.passwordCheckBox_CheckedChanged);
+            // 
+            // mailCheckBox
+            // 
+            this.mailCheckBox.AutoSize = true;
+            this.mailCheckBox.Location = new System.Drawing.Point(213, 183);
+            this.mailCheckBox.Name = "mailCheckBox";
+            this.mailCheckBox.Size = new System.Drawing.Size(111, 20);
+            this.mailCheckBox.TabIndex = 6;
+            this.mailCheckBox.Text = "Default E-mail";
+            this.mailCheckBox.UseVisualStyleBackColor = true;
+            this.mailCheckBox.CheckedChanged += new System.EventHandler(this.mailCheckBox_CheckedChanged);
+            // 
+            // AddDetails
+            // 
+            this.AddDetails.GroupName = "Details";
+            this.AddDetails.InputText = "";
+            this.AddDetails.Location = new System.Drawing.Point(6, 263);
+            this.AddDetails.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.AddDetails.Name = "AddDetails";
+            this.AddDetails.ReadOnly = false;
+            this.AddDetails.Size = new System.Drawing.Size(200, 50);
+            this.AddDetails.TabIndex = 5;
+            // 
+            // AddURL
+            // 
+            this.AddURL.GroupName = "URL";
+            this.AddURL.InputText = "";
+            this.AddURL.Location = new System.Drawing.Point(6, 183);
+            this.AddURL.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.AddURL.Name = "AddURL";
+            this.AddURL.ReadOnly = false;
+            this.AddURL.Size = new System.Drawing.Size(200, 50);
+            this.AddURL.TabIndex = 4;
+            // 
+            // AddLogin
+            // 
+            this.AddLogin.GroupName = "Login";
+            this.AddLogin.InputText = "";
+            this.AddLogin.Location = new System.Drawing.Point(212, 24);
+            this.AddLogin.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.AddLogin.Name = "AddLogin";
+            this.AddLogin.ReadOnly = false;
+            this.AddLogin.Size = new System.Drawing.Size(150, 50);
+            this.AddLogin.TabIndex = 3;
+            // 
+            // AddPassword
+            // 
+            this.AddPassword.GroupName = "Password";
+            this.AddPassword.InputText = "";
+            this.AddPassword.Location = new System.Drawing.Point(6, 104);
+            this.AddPassword.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.AddPassword.Name = "AddPassword";
+            this.AddPassword.ReadOnly = false;
+            this.AddPassword.Size = new System.Drawing.Size(200, 50);
+            this.AddPassword.TabIndex = 2;
+            // 
+            // AddEmail
+            // 
+            this.AddEmail.GroupName = "E-mail";
+            this.AddEmail.InputText = "";
+            this.AddEmail.Location = new System.Drawing.Point(212, 104);
+            this.AddEmail.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.AddEmail.Name = "AddEmail";
+            this.AddEmail.ReadOnly = false;
+            this.AddEmail.Size = new System.Drawing.Size(150, 50);
+            this.AddEmail.TabIndex = 1;
+            // 
+            // AddTitle
+            // 
+            this.AddTitle.GroupName = "Title";
+            this.AddTitle.InputText = "";
+            this.AddTitle.Location = new System.Drawing.Point(6, 24);
+            this.AddTitle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.AddTitle.Name = "AddTitle";
+            this.AddTitle.ReadOnly = false;
+            this.AddTitle.Size = new System.Drawing.Size(200, 50);
+            this.AddTitle.TabIndex = 0;
             // 
             // pTitleDataGridViewTextBoxColumn
             // 
@@ -472,15 +499,9 @@ namespace PassManager2._0
             this.pDetailsDataGridViewTextBoxColumn.HeaderText = "Details";
             this.pDetailsDataGridViewTextBoxColumn.Name = "pDetailsDataGridViewTextBoxColumn";
             // 
-            // deleteButton
+            // passwordBindingSource
             // 
-            this.deleteButton.Location = new System.Drawing.Point(916, 33);
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(75, 23);
-            this.deleteButton.TabIndex = 1;
-            this.deleteButton.Text = "Delete";
-            this.deleteButton.UseVisualStyleBackColor = true;
-            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            this.passwordBindingSource.DataSource = typeof(PassManager2._0.Password);
             // 
             // ApplicationForm
             // 
@@ -498,11 +519,11 @@ namespace PassManager2._0
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.tabSettings.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.passwordBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -543,12 +564,13 @@ namespace PassManager2._0
         private PassManager.Controls.NamedTextbox ChangePassword;
         private PassManager.Controls.NamedTextbox ChangeLogin;
         private PassManager.Controls.AppName appName1;
+        private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn pTitleDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pLoginDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pEmailDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pPasswordDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pURLDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pDetailsDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button deleteButton;
     }
 }

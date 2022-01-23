@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PassManager.Controls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -17,24 +18,30 @@ namespace PassManager2._0
 {
     public partial class ApplicationForm : Form
     {
-        public ApplicationForm()
+        int LoggedUserId;
+
+        public ApplicationForm(int userId)
         {
+            LoggedUserId = userId;
             InitializeComponent();
         }
 
         PassManagerDB db;
+        public void LoadPasswords()
+        {
+            
+            db = new PassManagerDB();
+            var ctx = new PassManagerDB();
+            var userPasswords = ctx.Passwords.Where(p => p.UserId==LoggedUserId).ToList();
+
+            passwordBindingSource.DataSource = userPasswords;
+
+        }
 
         public void ApplicationForm_Load(object sender, EventArgs e)
         {
-
-            db = new PassManagerDB();
-            db.Passwords.Load();
-            passwordBindingSource.DataSource = db.Passwords.Local;
-
-
+            LoadPasswords();
             
-
-
         }
 
         private void toolStripComboBox1_Click(object sender, EventArgs e)
@@ -57,8 +64,20 @@ namespace PassManager2._0
             return Membership.GeneratePassword(16, 6);
         }
 
+
+
         private void AddPasswordToDB_Click(object sender, EventArgs e)
         {
+            string PasswordToAdd;
+
+            if (passwordCheckBox.Checked == true)
+            {
+                PasswordToAdd = GenerateRandomString();
+            } else
+            {
+                PasswordToAdd = AddPassword.InputText;
+            }
+
             using(var ctx = new PassManagerDB())
             {
                 var password = new Password()
@@ -66,26 +85,66 @@ namespace PassManager2._0
                     PTitle = AddTitle.InputText,
                     PLogin = AddLogin.InputText,
                     PEmail = AddEmail.InputText,
-                    PPassword = AddPassword.InputText,
+                    PPassword = GetHashString(PasswordToAdd),
                     PURL = AddURL.InputText,
                     PDetails = AddDetails.InputText,
-                    UserId = 1
+                    UserId = LoggedUserId
                 };
                 ctx.Passwords.Add(password);
                 ctx.SaveChanges();
+                MessageBox.Show("Password added");
+                
+
             }
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            int id = (int)dataGridView1.CurrentRow.Cells[0].Value;
+           
+            int id = (int)dataGridView1.CurrentRow.Cells["Id"].Value;
             using (var ctx = new PassManagerDB())
             {
                 var password = new Password { Id = id };
                 ctx.Passwords.Attach(password);
                 ctx.Passwords.Remove(password);
                 ctx.SaveChanges();
+                LoadPasswords();
+                MessageBox.Show("Password deleted");
+
+
+
             }
+
+
+        }
+
+        private void tabControl1_Click(object sender, EventArgs e)
+        {
+            LoadPasswords();
+        }
+
+        public void checkBlock(CheckBox checkBox, NamedTextbox namedTextbox)
+        {
+            if (checkBox.Checked == true)
+            {
+                namedTextbox.InputText = "";
+                namedTextbox.ReadOnly = true;
+            }
+            else
+            {
+                namedTextbox.ReadOnly = false;
+            }
+        }
+
+        private void passwordCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBlock(passwordCheckBox, AddPassword);
+        }
+
+
+        private void mailCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBlock(mailCheckBox, AddEmail);
 
         }
 

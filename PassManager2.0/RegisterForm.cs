@@ -40,6 +40,8 @@ namespace PassManager2._0
                 };
                 ctx.Users.Add(user);
                 ctx.SaveChanges();
+                MessageBox.Show("User created");
+
             }
 
 
