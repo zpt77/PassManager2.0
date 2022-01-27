@@ -14,7 +14,7 @@ using System.Security.Cryptography;
 
 namespace PassManager2._0
 {
-    public partial class AuthenticationForm : Form
+    public partial class AuthenticationForm : Form, IDataProtection
     {
         public AuthenticationForm()
         {
@@ -28,7 +28,7 @@ namespace PassManager2._0
         private void loginPanel1_LoginClick(object sender, EventArgs e)
         {
             int userId = GetUsrID(GetCredentials()[0]);
-            string inputPassword = GetHashString(GetCredentials()[1]);
+            string inputPassword = Encrypt(GetCredentials()[1]);
             bool openSession = ComparePassword(inputPassword, GetUserHash(userId));
             if (openSession == true)
             {
@@ -73,14 +73,7 @@ namespace PassManager2._0
                 return algorithm.ComputeHash(Encoding.UTF8.GetBytes(inputString));
         }
 
-        public static string GetHashString(string inputString)
-        {
-            StringBuilder sb = new StringBuilder();
-            foreach (byte b in GetHash(inputString))
-                sb.Append(b.ToString("X2"));
-
-            return sb.ToString();
-        }
+        
 
         public string GetUserHash(int userId)
         {
@@ -106,6 +99,19 @@ namespace PassManager2._0
 
         }
 
-        
+        public string Encrypt(string inputString)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (byte b in GetHash(inputString))
+                sb.Append(b.ToString("X2"));
+
+            return sb.ToString();
+        }
+
+        public string Decrypt(string x)
+        {
+            MessageBox.Show("Cannot perform this operation");
+            throw new NotImplementedException();
+        }
     }
 }

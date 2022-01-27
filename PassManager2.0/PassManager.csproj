@@ -86,6 +86,7 @@
       <DependentUpon>ApplicationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DbObject.cs" />
+    <Compile Include="IDataProtection.cs" />
     <Compile Include="Migrations\202201041808390_InitialCreate.cs" />
     <Compile Include="Migrations\202201041808390_InitialCreate.Designer.cs">
       <DependentUpon>202201041808390_InitialCreate.cs</DependentUpon>

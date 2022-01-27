@@ -33,12 +33,9 @@ namespace PassManager2._0
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ApplicationForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPasswords = new System.Windows.Forms.TabPage();
+            this.CopyButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.copyToClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabSettings = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.appName1 = new PassManager.Controls.AppName();
@@ -65,17 +62,17 @@ namespace PassManager2._0
             this.AddPassword = new PassManager.Controls.NamedTextbox();
             this.AddEmail = new PassManager.Controls.NamedTextbox();
             this.AddTitle = new PassManager.Controls.NamedTextbox();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pTitleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pLoginDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pEmailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pPasswordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pURLDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pDetailsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.passwordBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPasswords.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
             this.tabSettings.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -100,6 +97,7 @@ namespace PassManager2._0
             // tabPasswords
             // 
             this.tabPasswords.BackColor = System.Drawing.Color.White;
+            this.tabPasswords.Controls.Add(this.CopyButton);
             this.tabPasswords.Controls.Add(this.deleteButton);
             this.tabPasswords.Controls.Add(this.dataGridView1);
             this.tabPasswords.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -109,6 +107,16 @@ namespace PassManager2._0
             this.tabPasswords.Size = new System.Drawing.Size(1025, 424);
             this.tabPasswords.TabIndex = 2;
             this.tabPasswords.Text = "Passwords";
+            // 
+            // CopyButton
+            // 
+            this.CopyButton.Location = new System.Drawing.Point(916, 78);
+            this.CopyButton.Name = "CopyButton";
+            this.CopyButton.Size = new System.Drawing.Size(75, 23);
+            this.CopyButton.TabIndex = 2;
+            this.CopyButton.Text = "Copy";
+            this.CopyButton.UseVisualStyleBackColor = true;
+            this.CopyButton.Click += new System.EventHandler(this.CopyButton_Click);
             // 
             // deleteButton
             // 
@@ -136,46 +144,20 @@ namespace PassManager2._0
             this.pTitleDataGridViewTextBoxColumn,
             this.pLoginDataGridViewTextBoxColumn,
             this.pEmailDataGridViewTextBoxColumn,
-            this.pPasswordDataGridViewTextBoxColumn,
+            this.Password,
             this.pURLDataGridViewTextBoxColumn,
             this.pDetailsDataGridViewTextBoxColumn});
-            this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
             this.dataGridView1.DataSource = this.passwordBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Left;
             this.dataGridView1.GridColor = System.Drawing.Color.SteelBlue;
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(871, 418);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.Visible = false;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.copyToClipboardToolStripMenuItem,
-            this.deleteToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(168, 48);
-            // 
-            // copyToClipboardToolStripMenuItem
-            // 
-            this.copyToClipboardToolStripMenuItem.Name = "copyToClipboardToolStripMenuItem";
-            this.copyToClipboardToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
-            this.copyToClipboardToolStripMenuItem.Text = "copy to clipboard";
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
-            this.deleteToolStripMenuItem.Text = "delete";
             // 
             // tabSettings
             // 
@@ -463,41 +445,56 @@ namespace PassManager2._0
             this.AddTitle.Size = new System.Drawing.Size(200, 50);
             this.AddTitle.TabIndex = 0;
             // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
             // pTitleDataGridViewTextBoxColumn
             // 
             this.pTitleDataGridViewTextBoxColumn.DataPropertyName = "PTitle";
             this.pTitleDataGridViewTextBoxColumn.HeaderText = "Title";
             this.pTitleDataGridViewTextBoxColumn.Name = "pTitleDataGridViewTextBoxColumn";
+            this.pTitleDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // pLoginDataGridViewTextBoxColumn
             // 
             this.pLoginDataGridViewTextBoxColumn.DataPropertyName = "PLogin";
             this.pLoginDataGridViewTextBoxColumn.HeaderText = "Login";
             this.pLoginDataGridViewTextBoxColumn.Name = "pLoginDataGridViewTextBoxColumn";
+            this.pLoginDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // pEmailDataGridViewTextBoxColumn
             // 
             this.pEmailDataGridViewTextBoxColumn.DataPropertyName = "PEmail";
             this.pEmailDataGridViewTextBoxColumn.HeaderText = "Email";
             this.pEmailDataGridViewTextBoxColumn.Name = "pEmailDataGridViewTextBoxColumn";
+            this.pEmailDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // pPasswordDataGridViewTextBoxColumn
+            // Password
             // 
-            this.pPasswordDataGridViewTextBoxColumn.DataPropertyName = "PPassword";
-            this.pPasswordDataGridViewTextBoxColumn.HeaderText = "Password";
-            this.pPasswordDataGridViewTextBoxColumn.Name = "pPasswordDataGridViewTextBoxColumn";
+            this.Password.DataPropertyName = "PPassword";
+            this.Password.HeaderText = "Password";
+            this.Password.Name = "Password";
+            this.Password.ReadOnly = true;
+            this.Password.Visible = false;
             // 
             // pURLDataGridViewTextBoxColumn
             // 
             this.pURLDataGridViewTextBoxColumn.DataPropertyName = "PURL";
             this.pURLDataGridViewTextBoxColumn.HeaderText = "URL";
             this.pURLDataGridViewTextBoxColumn.Name = "pURLDataGridViewTextBoxColumn";
+            this.pURLDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // pDetailsDataGridViewTextBoxColumn
             // 
             this.pDetailsDataGridViewTextBoxColumn.DataPropertyName = "PDetails";
             this.pDetailsDataGridViewTextBoxColumn.HeaderText = "Details";
             this.pDetailsDataGridViewTextBoxColumn.Name = "pDetailsDataGridViewTextBoxColumn";
+            this.pDetailsDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // passwordBindingSource
             // 
@@ -517,7 +514,6 @@ namespace PassManager2._0
             this.tabControl1.ResumeLayout(false);
             this.tabPasswords.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.tabSettings.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -535,9 +531,6 @@ namespace PassManager2._0
         private System.Windows.Forms.TabPage tabSettings;
         private System.Windows.Forms.TabPage tabPasswords;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem copyToClipboardToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.BindingSource passwordBindingSource;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -565,11 +558,12 @@ namespace PassManager2._0
         private PassManager.Controls.NamedTextbox ChangeLogin;
         private PassManager.Controls.AppName appName1;
         private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.Button CopyButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn pTitleDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pLoginDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pEmailDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pPasswordDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Password;
         private System.Windows.Forms.DataGridViewTextBoxColumn pURLDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pDetailsDataGridViewTextBoxColumn;
     }
